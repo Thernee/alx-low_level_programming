@@ -11,23 +11,13 @@ int _isupper(int c)
 	for (c = 'A'; c <= 'Z'; c++)
 	{
 		if (c >= 'A' && c <= 'Z')
-		{
-			_putchar(c);
-			_putchar(':');
-			_putchar(' ');
+		{ 
 			return (1);
+		
 		}
 		else
-		{
-			for (c = 32; c <= 126; c++)
-			{
-			_putchar(c);
-			_putchar(':');
-			_putchar(' ');
+		{ 
 			return (0);
-			}
 		}
-		_putchar('\n');
 	}
-	return (0);
 }
