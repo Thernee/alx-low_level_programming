@@ -17,14 +17,14 @@ int _isupper(int c)
 			_putchar(' ');
 			return (1);
 		}
-		else
+		else if (c = '32'; c <= '126'; c++)
 		{
 			_putchar(c);
 			_putchar(':');
 			_putchar(' ');
 			return (0);
 		}
+		_putchar('\n');
 	}
-	_putchar('\n');
 	return (0);
 }
