@@ -17,11 +17,12 @@ void puts_half(char *str)
 	{
 		counter++;
 	}
+	counter--
 	if (counter % 2 == 0)
 	{
 		end  = counter / 2;
 
-		for (i = end; i < counter; i++)
+		for (i = end; i <= counter; i++)
 		{
 			_putchar(str[i]);
 		}
@@ -30,7 +31,7 @@ void puts_half(char *str)
 	else
 	{
 		end = (counter - 1) / 2;
-		for (i = end; i < counter; i++)
+		for (i = end; i <= counter; i++)
 		{
 			_putchar(str[i]);
 		}
