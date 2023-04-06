@@ -9,13 +9,13 @@
  */
 int is_prime_H(int x, int y)
 {
-	if (y <= 1) 
+	if (y <= 1)
 		return (1);
 
 	if (x % y == 0)
 		return (0);
 
-	return (is_prime_H(x, y - 1)); 
+	return (is_prime_H(x, y - 1));
 }
 
 /**
@@ -26,9 +26,9 @@ int is_prime_H(int x, int y)
  */
 int is_prime_number(int n)
 {
-	if (n < 2) 
+	if (n < 2)
 		return (0);
 
-	return (is_prime_H(n, n / 2)); 
+	return (is_prime_H(n, n / 2));
 }
 
