@@ -2,15 +2,16 @@
 #include <stdlib.h>
 
 /**
- * main - adds positive numbers
+ * main - Adds positive numbers together
  *
- * @argc: count of all arguments to main
- * @argv: arguments to main
- * Return: Returns addition of all numbers passed to main
+ * @argc: The argument count
+ * @argv: the argument vector
+ * Return: returns 1 if there is and error Added numbers if successful
  */
+
 int main(int argc, char **argv)
 {
-	int i, j;
+	int i = 1;
 	int add = 0;
 
 	if (argc == 1)
@@ -19,19 +20,26 @@ int main(int argc, char **argv)
 		return (0);
 	}
 
-	for (i = 1; i < argc; i++)
+	while (argv[i] != NULL)
 	{
-		for (j  = 0; argv[i][j]; j++)
+		int j = 0;
+
+		while (argv[i][j] != '\0')
 		{
 			if (argv[i][j] < '0' || argv[i][j] > '9')
 			{
 				printf("Error\n");
 				return (1);
 			}
+			j++;
 		}
 		add += atoi(argv[i]);
+		i++;
 	}
+
 	printf("%d\n", add);
 
 	return (0);
 }
+
+
