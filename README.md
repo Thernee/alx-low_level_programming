@@ -1,1 +1,1 @@
-This repository contains my low-level programming works during my ALX Software engineering programme days.
+This contains all the low-level programming tasks I performed during my ALX days.
