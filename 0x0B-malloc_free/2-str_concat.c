@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * str_concat -concatenates 2 strings using malloc
+ * str_concat - concatenates 2 strings using malloc
  *
  * @s1: First string
  * @s2: Second string
- * Return: pointer to concatenates string, or NULL otherwise
+ * Return: pointer to concatenated string, or NULL otherwise
  */
 char *str_concat(char *s1, char *s2)
 {
@@ -14,7 +14,7 @@ char *str_concat(char *s1, char *s2)
 	int len1 = 0;
 	int len2 = 0;
 
-	if (s1 && s2 == NULL)
+	if (s1 == NULL || s2 == NULL)
 	{
 		return (NULL);
 	}
@@ -38,8 +38,8 @@ char *str_concat(char *s1, char *s2)
 	for (j = 0; j < len2; j++)
 	{
 		ptr[len1 + j] = s2[j];
-		len1++;
 	}
-	ptr[j] = '\0';
+	ptr[len1 + j] = '\0';
 	return (ptr);
 }
+
