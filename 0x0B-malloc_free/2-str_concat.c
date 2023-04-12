@@ -39,7 +39,7 @@ char *str_concat(char *s1, char *s2)
 	{
 		ptr[len1 + j] = s2[j];
 	}
-	ptr[len1 + j] = '\0';
+	ptr[len1 + len2] = '\0';
 	return (ptr);
 }
 
