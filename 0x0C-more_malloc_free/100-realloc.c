@@ -1,6 +1,32 @@
 #include "main.h"
 
 /**
+ * blockcpy - copies content of one memblock to another
+ *
+ * @new_ptr: pointer to new memory
+ * @ptr: pointer to old memory
+ * @new_size: size of new block
+ * Return: pointer to new memory
+ */
+char *blockcpy(char *new_ptr, char *ptr, unsigned int new_size)
+{
+	unsigned int i;
+
+	new_ptr = malloc(new_size);
+	if (new_ptr == NULL)
+	{
+		return (NULL);
+	}
+	for (i = 0; i < new_size; i++)
+	{
+		((char *)new_ptr)[i] = ((char *)ptr)[i];
+	}
+	free(ptr);
+	ptr = new_ptr;
+	return (ptr);
+}
+
+/**
  * _realloc - Reallocates a memory string to a given size
  *
  * @ptr: pointer to current memory of string
@@ -24,18 +50,22 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	else if (new_size > old_size)
 	{
-		new_ptr = ptr;
-		ptr = malloc(new_size);
-		if (ptr == NULL)
+		new_ptr = malloc(new_size);
+		if (new_ptr == NULL)
 		{
-			free(ptr);
-			ptr = new_ptr;
-			free(new_ptr);
+			return (NULL);
 		}
 		for (i = 0; i < old_size; i++)
 		{
-			ptr[i] = new_ptr;
+			((char *)new_ptr)[i] = ((char *)ptr)[i];
 		}
+		free(ptr);
+		ptr = new_ptr;
+	}
+	else
+	{
+		new_ptr = malloc(new_size);
+		blockcpy(new_ptr, ptr, new_size);
 	}
 	return (ptr);
 
