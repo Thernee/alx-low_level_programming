@@ -1,7 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
-
-#include "main.h"
 
 /**
  * error - prints error
@@ -50,6 +47,7 @@ int _atoi(const char *str)
 	return (sign * result);
 }
 
+
 /**
  * main - multiplies 2 positive integers
  *
@@ -59,27 +57,26 @@ int _atoi(const char *str)
  */
 int main(int argc, char **argv)
 {
-	int mul = 1;
-	int num1, num2;
+	int mul;
+	int num1 = 0;
+	int num2 = 0;
 
 	if (argc != 3)
 	{
 		error();
 	}
-	num1 = _atoi(argv[1]);
-	num2 = _atoi(argv[2]);
-	if (num1 < 0 || num2 < 0)
+	if ((num1 < '0' || num1 > '9') || (num2 < '0' || num2 > '9'))
 	{
 		error();
 	}
 	else
 	{
+		num1 = _atoi(argv[1]);
+		num2 = _atoi(argv[2]);
 		mul = num1 * num2;
-		_putchar('0' + mul);
+		_putchar(mul);
 		_putchar('\n');
 	}
 
 	return (0);
 }
-
-
