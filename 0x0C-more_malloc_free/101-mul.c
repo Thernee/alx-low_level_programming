@@ -57,24 +57,24 @@ int _atoi(const char *str)
  */
 int main(int argc, char **argv)
 {
-	int mul;
-	int num1 = 0;
-	int num2 = 0;
+	int mul = 1;
+	int num1;
+	int num2;
 
 	if (argc != 3)
 	{
 		error();
 	}
-	if ((num1 < '0' || num1 > '9') || (num2 < '0' || num2 > '9'))
+	num1 = _atoi(argv[1]);
+	num2 = _atoi(argv[2]);
+	if ((num1 < 0 || num2 < 0))
 	{
 		error();
 	}
 	else
 	{
-		num1 = _atoi(argv[1]);
-		num2 = _atoi(argv[2]);
 		mul = num1 * num2;
-		_putchar(mul);
+		_putchar('0' + mul);
 		_putchar('\n');
 	}
 
