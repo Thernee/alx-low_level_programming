@@ -11,7 +11,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int holder = atoi(argv[1]);
+	int holder;
 	int n, i;
 
 	if (argc != 2)
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(1);
 	}
-
+	holder = atoi(argv[1]);
 	n = atoi(argv[1]);
 
 	if (n < 0)
