@@ -1,11 +1,12 @@
 #include "lists.h"
 
 /**
- * pre_main - prints a string before main executes
+ * bwfore_main - prints a string before main executes
  *
  * Return: nothing
  */
-void pre_main()
+void before_main(void)
 {
-
+	printf("You're beat! and yet, you must allow,\n");
+	printf("I bore my house upon my back!\n");
 }
