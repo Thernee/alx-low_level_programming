@@ -1,16 +1,13 @@
 section .text
-global _start
-
-_start:
-mov edx, length
-mov ecx, message
-mov ebx,1
-mov eax,4
-int 0x80
-
-mov eax, 1
-int 0x80
+	global main
+	extern printf
 
 section .data
-message db 'Hello, Holberton',0Ah
-length equ $ - message
+	message db 'Hello, Holberton', 0Ah
+
+main:
+	push message
+	call printf
+	add esp, 4
+	xor eax, eax
+	ret
