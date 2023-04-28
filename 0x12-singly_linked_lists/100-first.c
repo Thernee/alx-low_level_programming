@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * bwfore_main - prints a string before main executes
+ * before_main - prints a string before main executes
  *
  * Return: nothing
  */
