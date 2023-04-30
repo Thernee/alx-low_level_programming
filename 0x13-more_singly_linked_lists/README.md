@@ -16,3 +16,7 @@ Functions:
 3. 2-add_nodeint.c
 	Adds a node at the beginning of a list
 	Return: Address of new element if successful, NULL otherwise
+
+4. 3-add_nodeint_end.c
+	Adds a new node at the end of alist
+	Return: Address of the new element
