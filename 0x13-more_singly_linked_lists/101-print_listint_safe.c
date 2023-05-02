@@ -8,8 +8,11 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	int count = 0;
-	int sub;
+	size_t count = 0;
+	long sub;
+
+	if (head == NULL)
+		exit(98);
 
 	while (head != NULL)
 	{
