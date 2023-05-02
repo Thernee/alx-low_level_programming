@@ -9,7 +9,7 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	int count = 0;
-	long sub;
+	long int  sub;
 
 	if (head == NULL)
 		return (98);
