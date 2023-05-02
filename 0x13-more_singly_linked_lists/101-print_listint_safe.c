@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - prints lists with some twist
+ * print_listint_safe - prints lists with some twists
  *
  * @head: head of the list
  * Return: number of nodes in list
