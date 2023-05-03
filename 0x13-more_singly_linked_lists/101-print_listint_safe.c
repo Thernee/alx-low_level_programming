@@ -9,18 +9,18 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	size_t count = 0;
-	long sub;
+	long int sub;
 
 	if (head == NULL)
-		exit(98);
+		return(0);
 
-	while (head == NULL)
+	while (head != NULL)
 	{
 		sub = head - head->next;
 		count++;
 		printf("[%p] %d\n", (void *)head, head->n);
 
-		if (sub >= 0)
+		if (sub > 0)
 			head = head->next;
 
 		else
