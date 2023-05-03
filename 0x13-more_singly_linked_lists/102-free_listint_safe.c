@@ -12,7 +12,7 @@ size_t free_listint_safe(listint_t **h)
 	listint_t *my_node;
 	int count = 0;
 
-	if (h == NULL)
+	if (h == NULL || *h == NULL)
 		return (0);
 
 	my_node = *h;
@@ -21,8 +21,10 @@ size_t free_listint_safe(listint_t **h)
 		holder = my_node;
 		my_node = my_node->next;
 
-		if ((void *)holder < (void *)my_node)
+		if ((void *)holder < (void *)my_node ||
+				(my_node == *h && holder->next == my_node))
 		{
+			holder->next = NULL;
 			free(holder);
 			count++;
 		}
