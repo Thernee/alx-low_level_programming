@@ -10,7 +10,7 @@ size_t print_listint_safe(const listint_t *head)
 {
 	const listint_t *my_node;
 	const listint_t *holder = NULL;
-	int count = 0, i = 0;
+	int count = 0, i;
 
 	if (head == NULL)
 		return (0);
@@ -22,6 +22,7 @@ size_t print_listint_safe(const listint_t *head)
 		count++;
 		my_node = my_node->next;
 		holder = head;
+		i = 0;
 
 		while (i < count)
 		{
