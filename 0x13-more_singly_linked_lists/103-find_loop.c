@@ -8,7 +8,7 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *ahead, *behind;
+	listint_t *ahead = head, *behind = head;
 
 	if (head == NULL)
 		return (NULL);
