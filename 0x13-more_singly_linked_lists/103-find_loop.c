@@ -13,14 +13,14 @@ listint_t *find_listint_loop(listint_t *head)
 	if (head == NULL)
 		return (NULL);
 
-	while ((behind != NULL && ahead != NULL) && ahead->next != NULL)
+	while ((behind != NULL) && (ahead != NULL) && (ahead->next != NULL))
 	{
 		ahead = ahead->next->next;
 		behind = behind->next;
 
 		if (ahead == behind)
 		{
-			behind = ahead;
+			behind = head;
 
 			while (behind != ahead)
 			{
