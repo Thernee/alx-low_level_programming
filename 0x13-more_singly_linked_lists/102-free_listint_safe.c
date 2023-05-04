@@ -1,6 +1,4 @@
 #include "lists.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
  * free_listint_safe - frees a list safe
@@ -60,6 +58,7 @@ size_t free_listint_safe(listint_t **h)
 int contains_node(listint_t **arr, listint_t *node)
 {
 	int i;
+
 	for (i = 0; i < 1024; i++)
 	{
 		if (arr[i] == node)
