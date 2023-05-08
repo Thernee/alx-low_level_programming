@@ -8,10 +8,12 @@
  */
 int str_len(char *str)
 {
-	int i;
+	int i = 0;
 
 	while (str[i] != '\0')
+	{
 		i++;
+	}
 
 	return (i);
 }
@@ -21,7 +23,7 @@ int str_len(char *str)
  *
  * @filename: pointer to the file
  * @letters: Number of letters to be read
- * Return: The actual nnumber of letters printed
+ * Return: The actual number of letters printed
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
@@ -37,26 +39,27 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (file_ptr == NULL)
 		return (0);
 
-	str = malloc(sizeof(char) * letters);
+	str = malloc(sizeof(char) * letters + 1);
 	if (str == NULL)
-		{fclose(file_ptr);
-			return (0);
-		}
-
-	while (fgets(str, letters, file_ptr) != NULL)
+	{
+		fclose(file_ptr);
+		return (0);
+	}
+	while (fgets(str, letters + 1, file_ptr) != NULL)
 	{
 		len  = str_len(str);
-		if (len > letters - 1)
+		if (len > 0 && str[len - 1] == '\n' && len - 1 == letters - 1)
 		{
-			holder += printf("%.*s", (int)(letters - 1), str);
+			str[len - 1] = '\0';
+			len--;
 		}
-		else
-		{
-			holder += printf("%s", str);
-		}
+		if (feof(file_ptr) && len == letters)
+			str[--len] = '\0';
+
+		holder += printf("%s", str);
 		if (holder < 0)
 			break;
-		if (holder >= (ssize_t) letters)
+		if (holder >= (ssize_t)letters)
 			break;
 	}
 	free(str);
