@@ -10,7 +10,9 @@
  */
 void print_usage(char *program_name)
 {
-	dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", program_name);
+	(void)program_name;
+
+	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 }
 
 /**
