@@ -49,7 +49,7 @@ void copy_file(char *from_filename, char *to_filename)
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (fd_to == -1)
 	{
-		print_error(to_filename, "Can't write to file", 99);
+		print_error(to_filename, "Can't write to", 99); /* removed 'file'*/
 	}
 
 
@@ -58,7 +58,7 @@ void copy_file(char *from_filename, char *to_filename)
 		bytes_written = write(fd_to, buffer, bytes_read);
 		if (bytes_written != bytes_read)
 		{
-			print_error(to_filename, "Can't write to file", 99);
+			print_error(to_filename, "Can't write to", 99); /* removed 'file'*/
 		}
 	}
 
