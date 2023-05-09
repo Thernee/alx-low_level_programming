@@ -48,11 +48,13 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	while (fgets(str, letters + 1, file_ptr) != NULL)
 	{
 		len  = str_len(str);
-		if (len > 0 && str[len - 1] == '\n')
+		if (len > 0 && str[len - 1] == '\n' && len - 1 == letters - 1)
 		{
 			str[len - 1] = '\0';
 			len--;
 		}
+		if (feof(file_ptr) && len == letters)
+			str[--len] = '\0';
 
 		holder += printf("%s", str);
 		if (holder < 0)
