@@ -1,10 +1,9 @@
 /**
-
-  _strncmp - compares two strings
-  @string1: the first string
-  @string2: the second string
-  @n: the maximum number of bytes to compare
-Return: 0 if the first n bytes of s1 and s2 are equal, otherwise non-zero
+ * _strncmp - compares two strings
+ * @string1: the first string
+ *@string2: the second string
+ *@n: the maximum number of bytes to compare
+ *Return: 0 if the first n bytes of s1 and s2 are equal, otherwise non-zero
  */
 int _strncmp(const char *string1, const char *string2, size_t n)
 {
@@ -23,9 +22,8 @@ int _strncmp(const char *string1, const char *string2, size_t n)
 	return (0);
 }
 /**
-
-  _close - closes a file descriptor and prints an error message upon failure
-  @fd: the file descriptor to close
+ * _close - closes a file descriptor and prints an error message upon failure
+ * @fd: the file descriptor to close
  */
 void _close(int file_descriptor)
 {
@@ -35,11 +33,10 @@ void _close(int file_descriptor)
 	exit(98);
 }
 /**
-
-  _read - reads from a file and prints an error message upon failure
-  @fd: the file descriptor to read from
-  @buffer: the buffer to write to
-  @count: the number of bytes to read
+ *_read - reads from a file and prints an error message upon failure
+ *@fd: the file descriptor to read from
+ *@buffer: the buffer to write to
+ *@count: the number of bytes to read
  */
 void _read(int file_descriptor, char *buffer, size_t count)
 {
@@ -50,10 +47,9 @@ void _read(int file_descriptor, char *buffer, size_t count)
 	exit(98);
 }
 /**
-
-  elf_magic - prints ELF magic
-
-  @header: the ELF header
+ * elf_magic - prints ELF magic
+ *
+ * @header: the ELF header
  */
 void elf_magic(const unsigned char *header)
 {
@@ -72,12 +68,11 @@ void elf_magic(const unsigned char *header)
 }
 
 /**
-
-  elf_class - prints ELF class
-
-  @header: the ELF header
-
-Return: bit mode (32 or 64)
+ *elf_class - prints ELF class
+ *
+ * @header: the ELF header
+ *
+ *Return: bit mode (32 or 64)
  */
 size_t elf_class(const unsigned char *header)
 {
@@ -98,12 +93,11 @@ size_t elf_class(const unsigned char *header)
 }
 
 /**
-
-  elf_data - prints ELF data
-
-  @header: the ELF header
-
-Return: 1 if big endian, otherwise 0
+ * elf_data - prints ELF data
+ *
+ * @header: the ELF header
+ *
+ *Return: 1 if big endian, otherwise 0
  */
 int elf_data(const unsigned char *header)
 {
@@ -124,14 +118,12 @@ int elf_data(const unsigned char *header)
 }
 
 /**
-
-  elf_version - prints ELF     /**
-
-  elf_entry - print ELF entry point address
-
-  @buffer: the ELF header
-
-  @bit_mode: the bit mode (32 or 64)
+ *
+ * elf_entry - print ELF entry point address
+ *
+ *  @buffer: the ELF header
+ *
+ * @bit_mode: the bit mode (32 or 64)
  */
 void elf_entry(const unsigned char *buffer, size_t bit_mode)
 {
@@ -147,14 +139,13 @@ void elf_entry(const unsigned char *buffer, size_t bit_mode)
 }
 
 /**
-
-  main - program entry point
-
-  @argc: the argument count
-
-  @argv: the argument vector
-
-Return: 0 on success, otherwise 1
+ *main - program entry point
+ *
+ * @argc: the argument count
+ *
+ * @argv: the argument vector
+ *
+ *Return: 0 on success, otherwise 1
  */
 int main(int argc, char **argv)
 {
@@ -187,4 +178,4 @@ int main(int argc, char **argv)
 
 	_close(fd);
 	return (0);
-} will this work properly?
+}
