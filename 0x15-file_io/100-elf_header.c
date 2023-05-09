@@ -23,7 +23,7 @@ int _strncmp(const char *string1, const char *string2, size_t n)
 }
 /**
  * _close - closes a file descriptor and prints an error message upon failure
- * @fd: the file descriptor to close
+ * @file_descriptor: the file descriptor to close
  */
 void _close(int file_descriptor)
 {
@@ -34,7 +34,7 @@ void _close(int file_descriptor)
 }
 /**
  *_read - reads from a file and prints an error message upon failure
- *@fd: the file descriptor to read from
+ *@file_descriptor: the file descriptor to read from
  *@buffer: the buffer to write to
  *@count: the number of bytes to read
  */
@@ -118,10 +118,9 @@ int elf_data(const unsigned char *header)
 }
 
 /**
- *
  * elf_entry - print ELF entry point address
  *
- *  @buffer: the ELF header
+ * @buffer: the ELF header
  *
  * @bit_mode: the bit mode (32 or 64)
  */
