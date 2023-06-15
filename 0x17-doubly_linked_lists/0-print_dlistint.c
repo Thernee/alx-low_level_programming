@@ -8,13 +8,13 @@
  */
 size_t print_dlistint(const dlistint_t *h)
 {
-	dlistint_t *holder;
+	const dlistint_t *holder;
 	size_t count = 0;
 
 	if (h == NULL)
 		return (0);
 
-	holder = head;
+	holder = h;
 	while (holder->next != NULL)
 	{
 		count++;

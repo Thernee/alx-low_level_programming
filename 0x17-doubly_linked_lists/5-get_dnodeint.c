@@ -11,12 +11,12 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
 	dlistint_t *holder;
 
-	node += 1;
+	index += 1;
 
-	if (head == NULL || *head == NULL)
+	if (head == NULL)
 		return (NULL);
 
-	holder = *head;
+	holder = head;
 
 	while (index != 1)
 	{
