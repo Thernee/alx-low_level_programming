@@ -3,44 +3,45 @@
 /**
  * delete_dnodeint_at_index - Deletes node at given index
  *
- * @head: pointer to the haed of the list
+ * @head: pointer to the head of the list
  * @index: Given index
- * Return: 1 if successful, -1 otherwise
+ * Return: 0 if successful, -1 otherwise
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-
 	dlistint_t *holder, *ahead, *behind;
 
 	if (head == NULL || *head == NULL)
 		return (-1);
 
-	index += 1;
 	holder = *head;
 
-	while (index != 1)
+	while (index > 0)
 	{
-		if (holder->next != NULL)
-			holder = holder->next;
-
-		else
+		if (holder == NULL)
 			return (-1);
+
+		holder = holder->next;
+		index--;
 	}
-	if (holder->next != NULL)
+
+	if (holder != NULL)
 	{
 		ahead = holder->next;
 		behind = holder->prev;
-		behind->next = ahead;
-		ahead->prev = behind;
+
+		if (ahead != NULL)
+			ahead->prev = behind;
+
+		if (behind != NULL)
+			behind->next = ahead;
+		else
+			*head = ahead;
+
+		free(holder);
 		return (0);
 	}
-	else if (holder->next == NULL)
-	{
-		behind = holder->prev;
-		behind->next = NULL;
-		holder->prev = NULL;
-		return (1);
-	}
-	return (1);
 
+	return (-1);
 }
+
