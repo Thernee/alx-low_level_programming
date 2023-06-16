@@ -5,7 +5,7 @@
  *
  * @head: pointer to the head of the list
  * @index: Given index
- * Return: 0 if successful, -1 otherwise
+ * Return: 1 if successful, -1 otherwise
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
@@ -21,7 +21,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		if (*head != NULL)
 			(*head)->prev = NULL;
 		free(holder);
-		return (0);
+		return (1);
 	}
 
 	while (index > 0)
@@ -46,7 +46,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 			*head = ahead;
 
 		free(holder);
-		return (0);
+		return (1);
 	}
 	return (-1);
 }
