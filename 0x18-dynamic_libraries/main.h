@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stddef.h>
-
+int rand(void);
 int _putchar(char c);
 int _islower(int c);
 int _isalpha(int c);
