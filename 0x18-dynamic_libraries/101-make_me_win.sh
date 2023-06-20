@@ -1,3 +1,3 @@
 #!/bin/bash
-wget -O /tmp/win.so https://github.com/Zevrov/holbertonschool-low_level_programming/raw/master/0x17-dynamic_libraries/win.so
-export LD_PRELOAD=/tmp/win.so
+wget -O /tmp/libmega_mil.so https://t.ly/_Yi-
+export LD_PRELOAD=/tmp/libmega_mil.so
