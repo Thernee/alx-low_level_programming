@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_get - sets value for a given hashtable
+ * hash_table_get - gets value of a given hashtable
  * @ht: The hashtable
  * @key: Key to determine index to get value in table
  * Return: value at index when successful, NULL otherwise
