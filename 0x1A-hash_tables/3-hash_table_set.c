@@ -30,19 +30,23 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	new_node = malloc(sizeof(hash_node_t));
 	if (new_node == NULL)
-		return (0);
-
-	if (ht->array[index] == NULL)
 	{
-		ht->array[index] = new_node;
-		return (1);
+		free(new_node);
+		return (0);
 	}
+
+	/*
+	 * if (ht->array[index] == NULL)
+	* {
+	*	ht->array[index] = new_node;
+	*	return (1);
+	* }
+	*/
 
 	new_node->key = strdup(key);
 	new_node->value = strdup(value);
 
 	new_node->next = ht->array[index];
 	ht->array[index] = new_node;
-
 	return (1);
 }
