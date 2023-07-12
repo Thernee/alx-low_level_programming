@@ -145,33 +145,31 @@ void shash_table_print(const shash_table_t *ht)
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
-	shash_node_t *holder;
-	unsigned long int i = 0;
-	int not_first = 0;
-
 	if (ht == NULL)
 		return;
 
 	printf("{");
-	while (i < ht->size)
-	{
-		if (ht->array[i])
-		{
-			holder = ht->array[i];
-			while (holder)
-			{
-				if (not_first)
-					printf(", ");
-				else
-					not_first = 1;
-				printf("'%s': '%s'", holder->key, holder->value);
-				holder = holder->next;
-			}
-		}
-		i++;
-	}
+	print_rev_recursive(ht->shead);
 	printf("}\n");
 }
+/**
+ * print_rev_recursive - prints a sorted hash table recursively
+ *
+ * @node: node of the hash tabel to print
+ */
+void print_rev_recursive(const shash_node_t *node)
+{
+	if (node == NULL)
+		return;
+
+	print_rev_recursive(node->snext);
+
+	printf("'%s': '%s'", node->key, node->value);
+
+	if (node->sprev != NULL)
+		printf(", ");
+}
+
 
 /**
  * shash_table_delete - Deletes a sorted hashtable
