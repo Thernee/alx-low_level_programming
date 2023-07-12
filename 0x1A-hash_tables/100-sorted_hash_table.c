@@ -75,7 +75,21 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	else
 		prev->next = new_node;
 
-	/* Update sorted linked list */
+	update_sorted_list(ht, new_node);
+
+	return (1);
+}
+
+/**
+ * update_sorted_list - updates a sorted linked list
+ *
+ * @ht: hash table containning the list
+ * @new_node: new node to be updated in the table
+ */
+void update_sorted_list(shash_table_t *ht, shash_node_t *new_node)
+{
+	shash_node_t *current;
+
 	if (ht->shead == NULL)
 	{
 		ht->shead = new_node;
@@ -100,15 +114,13 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	else
 	{
 		current = ht->shead;
-		while (current->snext != NULL && strcmp(current->snext->key, new_node->key) < 0)
+		while (current->snext && strcmp(current->snext->key, new_node->key) < 0)
 			current = current->snext;
 		new_node->sprev = current;
 		new_node->snext = current->snext;
 		current->snext->sprev = new_node;
 		current->snext = new_node;
 	}
-
-	return (1);
 }
 
 /**
