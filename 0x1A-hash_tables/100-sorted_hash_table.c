@@ -41,7 +41,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	shash_node_t *current, *prev, *new_node, *tmp;
+	shash_node_t *current, *prev, *new_node;
 
 	if (ht == NULL || value == NULL)
 		return (0);
@@ -99,17 +99,18 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		tmp = ht->shead;
-		while (tmp->snext != NULL && strcmp(tmp->snext->key, new_node->key) < 0)
-			tmp = tmp->snext;
-		new_node->sprev = tmp;
-		new_node->snext = tmp->snext;
-		tmp->snext->sprev = new_node;
-		tmp->snext = new_node;
+		current = ht->shead;
+		while (current->snext != NULL && strcmp(current->snext->key, new_node->key) < 0)
+			current = current->snext;
+		new_node->sprev = current;
+		new_node->snext = current->snext;
+		current->snext->sprev = new_node;
+		current->snext = new_node;
 	}
 
 	return (1);
 }
+
 /**
  * shash_table_get - finds a value in the hashtable
  *
@@ -147,30 +148,23 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 void shash_table_print(const shash_table_t *ht)
 {
 	shash_node_t *holder;
-	unsigned long int i = 0;
-	int not_first = 0;
+	char *sep;
 
 	if (ht == NULL)
 		return;
 
 	printf("{");
-	while (i < ht->size)
+	sep = "";
+
+	holder = ht->shead;
+
+	while (holder != NULL)
 	{
-		if (ht->array[i])
-		{
-			holder = ht->array[i];
-			while (holder)
-			{
-				if (not_first)
-					printf(", ");
-				else
-					not_first = 1;
-				printf("'%s': '%s'", holder->key, holder->value);
-				holder = holder->next;
-			}
-		}
-		i++;
+		printf("%s'%s': '%s'", sep, holder->key, holder->value);
+		sep = ", ";
+		holder = holder->snext;
 	}
+
 	printf("}\n");
 }
 
@@ -181,31 +175,26 @@ void shash_table_print(const shash_table_t *ht)
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
+	shash_node_t *holder;
+	char *sep;
+
 	if (ht == NULL)
 		return;
 
 	printf("{");
-	print_rev_recursive(ht->shead);
+	sep = "";
+
+	holder = ht->stail;
+
+	while (holder != NULL)
+	{
+		printf("%s'%s': '%s'", sep, holder->key, holder->value);
+		sep = ", ";
+		holder = holder->sprev;
+	}
+
 	printf("}\n");
 }
-/**
- * print_rev_recursive - prints a sorted hash table recursively
- *
- * @node: node of the hash tabel to print
- */
-void print_rev_recursive(const shash_node_t *node)
-{
-	if (node == NULL)
-		return;
-
-	printf("'%s': '%s'", node->key, node->value);
-
-	if (node->sprev != NULL)
-		printf(", ");
-
-	print_rev_recursive(node->sprev);
-}
-
 
 /**
  * shash_table_delete - Deletes a sorted hashtable
