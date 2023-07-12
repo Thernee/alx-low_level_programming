@@ -162,12 +162,12 @@ void print_rev_recursive(const shash_node_t *node)
 	if (node == NULL)
 		return;
 
-	print_rev_recursive(node->snext);
-
 	printf("'%s': '%s'", node->key, node->value);
 
 	if (node->sprev != NULL)
 		printf(", ");
+
+	print_rev_recursive(node->sprev);
 }
 
 
