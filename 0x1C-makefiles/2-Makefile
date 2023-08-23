@@ -1,18 +1,15 @@
-#.PHONY: all school
+.PHONY: all school
 
 
 CC=gcc
 SRC = main.c school.c
-OBJ = main.o school.o
-NAME = "school"
+OBJ = $(SRC:.c=.o)
+NAME = school
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o school
+	$(CC) $(OBJ) -o $(NAME)
 
-main.o: main.c
-	$(CC) -c -o main.o main.c
-
-school.o: school.c
-	$(CC) -c -o school.o school.c
+%.o: %.c
+	$(CC) -c -o $@ $<
